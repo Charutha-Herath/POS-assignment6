@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Store</title>
+
+    <link rel="stylesheet" href="../assets/normalize.css">
+    <link rel="stylesheet" href="../CSS/store.css">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+          crossorigin="anonymous">
+</head>
+<body>
+<header>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid" >
+            <a class="navbar-brand" href="../index.html"><img src="../assets/image/pos.png" width="130px" height="55px" style="margin-right: 50px"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent" >
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item" style="margin-right: 30px">
+                        <a class="nav-link active" aria-current="page" href="../index.html">Home</a>
+                    </li>
+                    <li class="nav-item" style="margin-right: 30px">
+                        <a class="nav-link" href="../pages/place-order.html"> Place orders</a>
+                    </li>
+                    <li class="nav-item" style="margin-right: 30px">
+                        <a class="nav-link" href="../pages/store.html">Store</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="customer.html">Customer</a>
+                    </li>
+                </ul>
+                <button type="button" class="btn btn-link">Log out</button>
+
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div >
+    <img id="image" src="../assets/image/city-super.jpg">
+</div>
+
+
+<section>
+    <div class="container form">
+        <div class="row">
+            <div class="text-center gradient-text">
+                <br>
+                <h2 id="customer">Store</h2>
+            </div>
+            <div class="col">
+                <form class="form_input">
+                    <div class="mb-3">
+                        <label for="item_id" class="form-label">Item Id</label>
+                        <input type="number" class="form-control" id="item_id" placeholder="Enter Item Id">
+                    </div>
+                    <div class="mb-3">
+                        <label for="item_name" class="form-label">Item Name</label>
+                        <input type="text" class="form-control" id="item_name" placeholder="Enter Item Name">
+                    </div>
+                    <div class="mb-3">
+                        <label for="price" class="form-label">Price</label>
+                        <input type="number" class="form-control" id="price" placeholder="Enter Price">
+                    </div>
+                    <div class="mb-3">
+                        <label for="qty" class="form-label">Qty on Hand</label>
+                        <input type="number" class="form-control" id="qty" placeholder="Enter qty">
+                    </div>
+                    <div id="btn">
+                        <button type="button" class="btn btn-primary">Add</button>&nbsp;&nbsp;
+                        <button type="button" class="btn btn-success">Update</button>&nbsp;&nbsp;
+                        <button type="button" class="btn btn-danger">Delete</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<br><br><br>
+
+<section id="sec-table">
+
+    <div class="col table1">
+        <table id="itemTable" class="table ">
+            <thead class="table-primary">
+            <tr>
+                <th scope="col">Item Id</th>
+                <th scope="col">Item Name</th>
+                <th scope="col">Price (1kg or 1pc)</th>
+                <th scope="col">Qty on Hand</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <th scope="row">1</th>
+                <td>Red rice</td>
+                <td>Rs190.00</td>
+                <td>100</td>
+            </tr>
+            </tbody>
+            <tr>
+        </table>
+    </div>
+
+</section>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+</body>
+</html>
