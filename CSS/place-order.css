@@ -9,3 +9,56 @@
 
     position: absolute;
 }
+
+
+#sec-invoice{
+    width: 40vw;
+    height: 38vh;
+
+    left: 10px;
+    position: absolute;
+    /*width: 400px;
+    !*height: 80vw;*!
+    !*height: 90vh;*!
+    height: 600px;
+
+    position: absolute;*/
+}
+
+#cus-invoice-border{
+    border: red solid 2px;
+    border-radius: 20px;
+
+    /*left: 10px;*/
+
+    position: absolute;
+}
+
+
+#sec-items{
+    width: 30vw;
+    /*height: 40vh;*/
+
+    left: 450px;
+
+    position: absolute;
+}
+
+#cus-items-border{
+    border: red solid 2px;
+    border-radius: 20px;
+
+    height: 580px;
+
+
+}
+
+#div-2nd{
+    left: 100px;
+}
+
+
+/*
+body{
+    position: relative;
+}*/
