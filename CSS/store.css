@@ -27,3 +27,8 @@ section{
 
     position: absolute;
 }
+
+#sec-table .table thead th {
+    background-color: #ef6e6e;
+    color: Black;
+}
