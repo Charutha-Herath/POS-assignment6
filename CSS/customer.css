@@ -11,6 +11,8 @@ section{
     bottom: 0;
 
     margin: auto;
+
+    position: relative;
 }
 
 #sec-table{
@@ -27,8 +29,40 @@ section{
     position: absolute;
 }
 
+#image-mini{
+    display: none;
+
+
+}
+
+#cus-customer-border{
+    border: red solid 2px;
+    border-radius: 20px;
+
+
+}
+
 
 #sec-table .table1 thead th {
     background-color: #ef6e6e;
     color: Black;
+}
+
+@media all and (max-width: 600px){
+
+    #image{
+        display: none;
+    }
+    #image-mini{
+        display: block;
+        width: 50px;
+        height: 50px;
+        border-radius: 100%;
+        top: 7px;
+        right: 7px;
+
+        position: absolute;
+
+
+    }
 }
