@@ -10,13 +10,21 @@
     position: absolute;
 }
 
+#image-mini{
+    display: none;
+
+
+}
+
 
 #sec-invoice{
-    width: 40vw;
+    width: 400px;
+
+    /*width: 40vw;
     height: 38vh;
 
     left: 10px;
-    position: absolute;
+    position: absolute;*/
     /*width: 400px;
     !*height: 80vw;*!
     !*height: 90vh;*!
@@ -26,9 +34,10 @@
 }
 
 #cus-invoice-border{
+
     border: red solid 2px;
     border-radius: 20px;
-
+    left: 50px;
     /*left: 10px;*/
 
     position: absolute;
@@ -36,7 +45,7 @@
 
 
 #sec-items{
-    width: 30vw;
+    width: 450px;
     /*height: 40vh;*/
 
     left: 450px;
@@ -47,14 +56,80 @@
 #cus-items-border{
     border: red solid 2px;
     border-radius: 20px;
-
+    left: 100px;
     height: 580px;
+
+    position: relative;
 
 
 }
 
 #div-2nd{
     left: 100px;
+}
+
+#item-content{
+    left: 15px;
+    position: relative;
+
+}
+
+@media all and (max-width: 1100px){
+
+    #image{
+
+    }
+
+    #sec-invoice{
+
+
+    }
+
+
+    #sec-items{
+        width: 400px;
+        /*height: 40vh;*/
+
+        left: 10px;
+
+        position: absolute;
+    }
+
+    #cus-items-border{
+        border: red solid 2px;
+        border-radius: 20px;
+        height: 580px;
+
+        top: 800px;
+        left: 35px;
+
+
+
+        position: relative;
+
+
+    }
+
+
+}
+
+@media all and (max-width: 550px){
+    #image{
+        display: none;
+    }
+
+    #image-mini{
+        display: block;
+        width: 80px;
+        height: 80px;
+        border-radius: 100%;
+        top: 8px;
+        right: 2px;
+
+        position: absolute;
+
+
+    }
 }
 
 

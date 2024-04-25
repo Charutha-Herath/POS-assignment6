@@ -45,13 +45,16 @@
     </nav>
 </header>
 <body>
+
+
 <div >
     <img id="image" src="../assets/image/city-super.jpg">
 </div>
 
 <section id="sec-invoice">
-    <div id="cus-invoice-border">
 
+    <div id="cus-invoice-border">
+        <img id="image-mini" src="../assets/image/city-super.jpg">
     <div class="container mb-5">
         <div class="row" >
             <div class="text-center gradient-text"><br>
@@ -94,19 +97,22 @@
                         <input type="number" class="form-control" id="balance" placeholder="Balance Here">
                     </div>
                     <div id="btn">
-                        <button type="button" class="btn btn-warning" style="background-color: limegreen">Purchase</button>
+                        <button type="button" class="btn btn-outline-warning" style="background-color: limegreen">Purchase</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
     </div>
+
+
 </section>
 
 <section id="sec-items">
     <div id="cus-items-border">
 
-    <div class="col-md-6 mt-3" >
+
+    <div class="col" id="item-content" >
         <form class="form_input2" id="items-form">
             <div class="card-header text-center gradient-text">
                 <br><br>
@@ -133,9 +139,9 @@
                 <input type="number" class="form-control" id="subTotal" placeholder="Total">
             </div>
             <div id="button">
-                <button type="button" class="btn btn-primary">ADD</button>
-                <button type="button" class="btn btn-success">Update</button>
-                <button type="button" class="btn btn-danger">Delete</button>
+                <button type="button" class="btn btn-outline-primary">ADD</button>
+                <button type="button" class="btn btn-outline-success">Update</button>
+                <button type="button" class="btn btn-outline-danger">Delete</button>
             </div>
         </form>
     </div>
