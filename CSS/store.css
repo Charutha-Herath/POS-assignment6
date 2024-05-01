@@ -1,7 +1,5 @@
-@charset "UTF-8";
 
-
-section{
+#store-sec-form{
 
     width: 400px;
     /*min-width: 200px;*/
@@ -16,11 +14,18 @@ section{
     position: relative;
 }
 
-#sec-table{
-    min-width: 70vw;
+#sec-store-table{
+    width: 85vw;
+
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+
+    margin: auto;
 }
 
-#image{
+#store-image{
     width: 80px;
     height: 80px;
     border-radius: 100%;
@@ -30,7 +35,7 @@ section{
     position: absolute;
 }
 
-#image-mini{
+#store-image-mini{
     display: none;
 
 
@@ -38,24 +43,24 @@ section{
 
 
 
-#cus-customer-border{
+#store-border{
     border: red solid 2px;
     border-radius: 20px;
 
 
 }
 
-#sec-table .table thead th {
+.table thead th {
     background-color: #ef6e6e;
     color: Black;
 }
 
 @media all and (max-width: 600px){
 
-    #image{
+    #store-image{
         display: none;
     }
-    #image-mini{
+    #store-image-mini{
         display: block;
         width: 50px;
         height: 50px;
