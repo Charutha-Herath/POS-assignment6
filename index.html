@@ -5,12 +5,26 @@
     <title>Assignment 06</title>
 
     <link rel="stylesheet" href="assets/normalize.css">
+    <link rel="stylesheet" href="CSS/place-order.css">
+    <link rel="stylesheet" href="CSS/store.css">
+    <link rel="stylesheet" href="CSS/customer.css">
 
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
           rel="stylesheet"
           integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
-          crossorigin="anonymous">
+          crossorigin="anonymous"
+    >
+
+    <style>
+
+        #sec-main-place-order,#sec-main-store,#sec-main-customer{
+            display: none;
+        }
+        #nav-home,#nav-place-order,#nav-store,#nav-customer{
+            cursor: pointer;
+        }
+    </style>
 
 </head>
 
@@ -24,16 +38,16 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent" >
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item" style="margin-right: 30px">
-                        <a class="nav-link active" aria-current="page" href="index.html" id="nav-home">Home</a>
+                        <span class="nav-link active" aria-current="page"  id="nav-home">Home</span>
                     </li>
                     <li class="nav-item" style="margin-right: 30px">
-                        <a class="nav-link" href="pages/place-order.html" id="nav-place-order"> Place orders</a>
+                        <span class="nav-link"  id="nav-place-order"> Place orders</span>
                     </li>
                     <li class="nav-item" style="margin-right: 30px">
-                        <a class="nav-link" href="pages/store.html" id="nav-store">Store</a>
+                        <span class="nav-link"  id="nav-store">Store</span>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="pages/customer.html" id="nav-customer">Customer</a>
+                        <span class="nav-link"  id="nav-customer">Customer</span>
                     </li>
                 </ul>
                 <button type="button" class="btn btn-link">Log out</button>
@@ -72,7 +86,7 @@
 
 <!----------------------------------------------------- PLACE ORDER ------------------------------------------------------------------->
 
-<!--<section id="sec-main-place-order">
+<section id="sec-main-place-order">
     <div >
         <img id="place-image" src="../assets/image/city-super.jpg">
     </div>
@@ -80,13 +94,13 @@
     <section id="sec-invoice" >
 
         <div id="cus-invoice-border">
-            <img id="place-image-mini" src="../assets/image/city-super.jpg">
+            <img id="place-image-mini" src="assets/image/city-super.jpg">
             <div class="container mb-5">
 
 
                 <div class="row">
                 <span class="border border-danger" id="place-border-invoice" >
-                <div class="col-md-6" id="place-col-invoice" style="" >  &lt;!&ndash;-&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&ndash;&gt;
+                <div class="col-md-6" id="place-col-invoice" style="" >  <!------------------------------------------->
                     <div class="text-center gradient-text"><br>
                         <h2 id="place-h2-customer">Place order</h2>
                     </div>
@@ -183,20 +197,20 @@
 </section>
 
 
-&lt;!&ndash;-&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45; STORE -&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&ndash;&gt;
+<!----------------------------------------------------- STORE ------------------------------------------------------------------->
 
 
 <section id="sec-main-store">
     <div >
-        <img id="store-image" src="../assets/image/city-super.jpg">
+        <img id="store-image" src="assets/image/city-super.jpg">
     </div>
 
 
     <section id="store-sec-form">
 
-        &lt;!&ndash;<span class="border border-danger" id="border-invoice" >&ndash;&gt;
+        <!--<span class="border border-danger" id="border-invoice" >-->
         <div id="store-border" >
-            <img id="store-image-mini" src="../assets/image/city-super.jpg">
+            <img id="store-image-mini" src="assets/image/city-super.jpg">
             <div class="container form">
                 <div class="row">
                     <div class="text-center gradient-text">
@@ -264,17 +278,17 @@
 </section>
 
 
-&lt;!&ndash;-&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45; CUSTOMER-&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&ndash;&gt;
+<!----------------------------------------------------- CUSTOMER------------------------------------------------------------------->
 
 
 <section id="sec-main-customer">
     <div >
-        <img id="customer-image" src="../assets/image/city-super.jpg">
+        <img id="customer-image" src="assets/image/city-super.jpg">
     </div>
 
     <section id="sec-customer">
         <div id="cus-customer-border">
-            <img id="customer-image-mini" src="../assets/image/city-super.jpg">
+            <img id="customer-image-mini" src="assets/image/city-super.jpg">
             <div class="container form">
                 <div class="row">
                     <div class="text-center gradient-text">
@@ -370,7 +384,7 @@
         $('#sec-main-customer').css('display', 'block');
     });
 
-</script>-->
+</script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
