@@ -96,6 +96,30 @@
 
 
 
+#sec-store-table{
+    width: 55vw;
+
+
+    right: -40.5vw;
+    top: -230px;
+
+    position: relative;
+
+}
+
+.table thead th {
+    background-color: #ef6e6e;
+    color: Black;
+}
+
+
+
+
+
+
+
+
+
 /*
 @charset "UTF-8";
 
