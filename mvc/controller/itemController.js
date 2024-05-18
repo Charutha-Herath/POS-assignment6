@@ -50,6 +50,60 @@ function generateItemCode() {
 
 }
 
+submit.on('click', (e) => {
+
+    e.preventDefault();
+
+    let itemCodeValue = itemCode.val();
+    let itemNameValue = itemName.val().trim();
+    let priceValue = parseFloat(price.val());
+    let qtyOnHandValue = parseInt(qtyOnHand.val(), 10);
+
+    if(
+        validation(itemNameValue, "item name", null) &&
+        validation(priceValue, "Price", null) &&
+        validation(qtyOnHandValue, "Qty On Hand",null)){
+        let item = new ItemModel(
+            itemCodeValue,
+            itemNameValue,
+            priceValue,
+            qtyOnHandValue
+        );
+
+        Swal.fire(
+            'Save Successfully!',
+            'Successful',
+            'success'
+        );
+
+        item_db.push(item);
+
+        populateItemTable();
+
+        resetColumns();
+    }
+
+});
+
+function validation(value,message,test){
+    if(!value){
+        showValidationError('Null Input','Input '+message);
+        return false;
+    }
+    if(test===null){
+        return true;
+    }
+    if(!test){
+        showValidationError('Invalid Input','Invalid Input '+message);
+        return false;
+    }
+    return true;
+}
+
+
+
+
+
 function populateItemTable(){
     $('tbody').eq(1).empty();
     item_db.map((item) => {
@@ -63,3 +117,22 @@ function populateItemTable(){
         );
     });
 }
+
+function resetColumns() {
+    reset.click();
+    itemCode.val(generateItemCode());
+    submit.prop("disabled", false);
+    delete_btn.prop("disabled", true);
+    update_btn.prop("disabled", true);
+}
+
+reset.on('click', function(e) {
+    e.preventDefault();
+    itemCode.val(generateItemCode());
+    itemName.val('');
+    price.val('');
+    qtyOnHand.val('');
+    submit.prop("disabled", false);
+    delete_btn.prop("disabled", true);
+    update_btn.prop("disabled", true);
+});
