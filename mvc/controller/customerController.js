@@ -1,10 +1,10 @@
 import {customer_db} from "../db/db.js";
 import {CustomerModel} from "../model/customerModel.js";
 
-let submit = $('#Customer .btn-success').eq(0);
-let update = $('#Customer .btn-primary').eq(0);
-let delete_btn = $('#Customer .btn-danger').eq(0);
-let reset = $('#Customer .btn-warning').eq(0);
+let submit = $('#btn-customer-add').eq(0);
+let update_btn = $('#btn-customer-update').eq(0);
+let delete_btn = $('#btn-customer-delete').eq(0);
+let reset = $('#btn-customer-reset').eq(0);
 
 let customer_id = $('#customer_id');
 let name = $('#customer_name');
@@ -43,3 +43,23 @@ function generateCustomerId() {
     // Increment the highest numeric part and format as "item-XXX"
     return `cust-${String(highestCustId + 1).padStart(3, '0')}`;
 }
+
+function resetColumns() {
+    reset.click();
+    customer_id.val(generateCustomerId());
+    delete_btn.prop("disabled", true);
+    update_btn.prop("disabled", true);
+    submit.prop("disabled",false);
+}
+
+reset.on('click', function(e) {
+    e.preventDefault();
+    customer_id.val(generateCustomerId());
+    name.val('');
+    address.val('');
+    contact.val('');
+    email.val('');
+    submit.prop("disabled", false);
+    delete_btn.prop("disabled", true);
+    update_btn.prop("disabled", true);
+});
