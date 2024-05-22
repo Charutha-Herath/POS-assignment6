@@ -197,5 +197,31 @@ update_btn.on('click', () => {
 
 });
 
+delete_btn.on('click', () => {
 
+    let itemCodeValue = itemCode.val();
+
+    Swal.fire({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Delete'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            let index = item_db.findIndex(item => item.item_code === itemCodeValue);
+            item_db.splice(index, 1);
+            populateItemTable();
+            resetColumns();
+            Swal.fire(
+                'Deleted!',
+                'Your file has been deleted.',
+                'success'
+            )
+        }
+    });
+
+});
 
