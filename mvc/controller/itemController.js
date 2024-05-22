@@ -100,7 +100,14 @@ function validation(value,message,test){
     return true;
 }
 
-
+function showValidationError(title, text) {
+    Swal.fire({
+        icon: 'error',
+        title: title,
+        text: text,
+        footer: '<a href="">Why do I have this issue?</a>'
+    });
+}
 
 
 
@@ -136,3 +143,59 @@ reset.on('click', function(e) {
     delete_btn.prop("disabled", true);
     update_btn.prop("disabled", true);
 });
+
+$('#itemTable').on('click', 'tbody tr', function() {
+
+    let itemCodeValue = $(this).find('th').text();
+    let itemNameValue = $(this).find('td:eq(0)').text();
+    let priceValue = $(this).find('td:eq(1)').text();
+    let qtyOnHandValue = $(this).find('td:eq(2)').text();
+
+    itemCode.val(itemCodeValue);
+    itemName.val(itemNameValue);
+    price.val(priceValue);
+    qtyOnHand.val(qtyOnHandValue);
+
+    submit.prop("disabled", true);
+    delete_btn.prop("disabled", false);
+    update_btn.prop("disabled", false);
+
+});
+
+update_btn.on('click', () => {
+
+    let itemCodeValue = itemCode.val();
+    let itemNameValue = itemName.val().trim();
+    let priceValue = price.val().trim();
+    let qtyOnHandValue = qtyOnHand.val().trim();
+
+    if(
+        validation(itemNameValue, "item name", null) &&
+        validation(priceValue, "Price", null) &&
+        validation(qtyOnHandValue, "Qty On Hand",null)){
+
+        item_db.map((item) => {
+            if (item.item_code === itemCodeValue) {
+                item.item_name = itemNameValue;
+                item.price = priceValue;
+                item.qty_on_hand = qtyOnHandValue;
+            }
+
+        });
+
+        Swal.fire(
+            'Update Successfully !',
+            'Successful',
+            'success'
+        )
+
+        populateItemTable();
+
+        resetColumns();
+
+    }
+
+});
+
+
+
