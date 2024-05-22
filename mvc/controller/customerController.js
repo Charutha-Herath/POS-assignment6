@@ -16,15 +16,16 @@ let searchField=$('#searchField');
 
 
 
+const mobilePattern = new RegExp("^(?:0|94|\\+94|0094)?(?:(11|21|23|24|25|26|27|31|32|33|34|35|36|37|38|41|45|47|51|52|54|55|57|63|65|66|67|81|91)(0|2|3|4|5|7|9)|7(0|1|2|4|5|6|7|8)\\d)\\d{6}$");
 
 
 
 $('#nav-customer').on('click', function() {
     customer_id.val(generateCustomerId());
-    /*populateCustomerTable();
+    populateCustomerTable();
     delete_btn.prop("disabled", true);
-    update.prop("disabled", true);
-    searchField.attr("placeholder", "Search Customer Here");*/
+    update_btn.prop("disabled", true);
+    //searchField.attr("placeholder", "Search Customer Here");
 });
 
 function generateCustomerId() {
@@ -58,11 +59,25 @@ reset.on('click', function(e) {
     name.val('');
     address.val('');
     contact.val('');
-    email.val('');
     submit.prop("disabled", false);
     delete_btn.prop("disabled", true);
     update_btn.prop("disabled", true);
 });
+
+function validation(value,message,test) {
+    if(!value){
+        showValidationError('Null Input','Input '+message);
+        return false;
+    }
+    if(test===null){
+        return true;
+    }
+    if(!test){
+        showValidationError('Invalid Input','Invalid Input '+message);
+        return false;
+    }
+    return true;
+}
 
 submit.on('click', (e) => {
     e.preventDefault();
