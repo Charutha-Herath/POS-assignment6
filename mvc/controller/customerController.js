@@ -63,3 +63,62 @@ reset.on('click', function(e) {
     delete_btn.prop("disabled", true);
     update_btn.prop("disabled", true);
 });
+
+submit.on('click', (e) => {
+    e.preventDefault();
+
+    let customerIdValue = customer_id.val();
+    let nameValue = name.val().trim();
+    let addressValue = address.val().trim();
+    let contactValue = contact.val().trim();
+
+
+    if(
+        validation(nameValue, "customer name", null) &&
+        validation(addressValue, "Address", null) &&
+        validation(contactValue, "Contact", mobilePattern.test(contactValue))){
+        let customer = new CustomerModel(
+            customerIdValue,
+            nameValue,
+            addressValue,
+            contactValue
+
+        );
+
+        let newCustomer = JSON.stringify(customer);
+
+
+
+        $.ajax({
+            url:"http://localhost:8080/page/customer",
+            type:"POST",
+            data:newCustomer,
+            headers:{"Content-Type":"application/json"},
+            success: (res) =>{
+                console.log(JSON.stringify(res))
+            },
+            error: (err)=>{
+                console.error(err)
+            }
+        });
+
+        populateCustomerTable();
+
+        resetColumns();
+    }
+
+});
+
+function populateCustomerTable(){
+    $('tbody').eq(0).empty();
+    customer_db.map((customer) => {
+        $('tbody').eq(0).append(
+            `<tr>
+                <th scope="row">${customer.customer_id}</th>
+                <td>${customer.name}</td>
+                <td>${customer.address}</td>
+                <td>${customer.contact}</td>
+            </tr>`
+        );
+    });
+}
