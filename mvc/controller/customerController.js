@@ -100,7 +100,8 @@ submit.on('click', (e) => {
 
         );
 
-        let newCustomer = JSON.stringify(customer);
+
+        /*let newCustomer = JSON.stringify(customer);
 
 
 
@@ -115,7 +116,15 @@ submit.on('click', (e) => {
             error: (err)=>{
                 console.error(err)
             }
-        });
+        });*/
+
+        Swal.fire(
+            'Save Successfully!',
+            'Successful',
+            'success'
+        );
+
+        customer_db.push(customer);
 
         populateCustomerTable();
 
