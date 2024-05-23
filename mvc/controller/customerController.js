@@ -146,3 +146,86 @@ function populateCustomerTable(){
         );
     });
 }
+
+$('#customerTable').on('click', 'tbody tr', function() {
+    let customerIdValue = $(this).find('th').text();
+    let nameValue = $(this).find('td:eq(0)').text();
+    let addressValue = $(this).find('td:eq(1)').text();
+    let contactValue = $(this).find('td:eq(2)').text();
+
+
+    customer_id.val(customerIdValue);
+    name.val(nameValue);
+    address.val(addressValue);
+    contact.val(contactValue);
+
+
+    submit.prop("disabled", true);
+    delete_btn.prop("disabled", false);
+    update_btn.prop("disabled", false);
+
+});
+
+update_btn.on('click', () => {
+
+    let customerIdValue = customer_id.val();
+    let nameValue = name.val().trim();
+    let addressValue = address.val().trim();
+    let contactValue = contact.val().trim();
+
+
+    if(
+        validation(nameValue, "customer name", null) &&
+        validation(addressValue, "Address", null) &&
+        validation(contactValue, "Contact", mobilePattern.test(contactValue))) {
+
+        customer_db.map((customer) => {
+            if (customer.customer_id === customerIdValue) {
+                customer.name = nameValue;
+                customer.address = addressValue;
+                customer.contact = contactValue;
+            }
+        });
+
+        Swal.fire(
+            'Update Successfully !',
+            'Successful',
+            'success'
+        )
+
+        populateCustomerTable();
+
+        resetColumns();
+
+    }
+
+});
+
+delete_btn.on('click', () => {
+
+    let customerIdValue = parseInt(customer_id.val(), 10);
+
+    Swal.fire({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Delete'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            let index = customer_db.findIndex(customer => customer.customer_id === customerIdValue);
+            customer_db.splice(index, 1);
+            populateCustomerTable();
+            resetColumns();
+            Swal.fire(
+                'Deleted!',
+                'Your file has been deleted.',
+                'success'
+            )
+        }
+    });
+
+
+});
