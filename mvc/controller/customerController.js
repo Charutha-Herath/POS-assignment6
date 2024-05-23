@@ -123,7 +123,7 @@ submit.on('click', (e) => {
             'Successful',
             'success'
         );
-
+        console.log("Customer array : " ,customer)
         customer_db.push(customer);
 
         populateCustomerTable();
@@ -134,9 +134,9 @@ submit.on('click', (e) => {
 });
 
 function populateCustomerTable(){
-    $('tbody').eq(0).empty();
+    $('tbody').eq(3).empty();
     customer_db.map((customer) => {
-        $('tbody').eq(0).append(
+        $('tbody').eq(3).append(
             `<tr>
                 <th scope="row">${customer.customer_id}</th>
                 <td>${customer.name}</td>
