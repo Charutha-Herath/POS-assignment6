@@ -22,3 +22,12 @@ let itemName=$('#item_name1');
 let price=$('#price1');
 let qtyOnHand=$('#qty_on_hand');
 let qty=$('#getQty');
+
+
+
+let add = $('#addBtn');
+let resetItemDetails=$('#resetItemDetailsBtn');
+let submitBtn=$('#purchase_btn');
+
+let updateBtn2=$('#UpdateBtn3');
+let removeBtn=$('#removeBtn');
