@@ -8,15 +8,17 @@ import {order_db} from "../db/db.js";
 import {OrderModel} from "../model/placeOrderModel";
 
 let customerIdCB = $('#order_customer_id');
-let itemIdCB = $('#item_code1');
 let orderId=$('#order_id');
-let itemName=$('#item_name1');
-let price=$('#price1');
-let qtyOnHand=$('#qty_on_hand');
-let qty=$('#getQty');
-let customerName=$('#customer_name1');
+let customerName=$('#order_customer_name');
 let total=$('#total');
 let discountInput = $('#discount');
 let subTotalInput = $('#sub_total');
 let cashInput=$('#Cash');
 let balanceInput=$('#balance');
+
+
+let itemIdCB = $('#item_code1');
+let itemName=$('#item_name1');
+let price=$('#price1');
+let qtyOnHand=$('#qty_on_hand');
+let qty=$('#getQty');
