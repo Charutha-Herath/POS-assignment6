@@ -136,6 +136,7 @@ add.on("click", function () {
 
     total.val(calculateTotal());
 
+    discountInput.onclick;
 });
 
 function showValidationError(title, text) {
@@ -270,6 +271,10 @@ removeBtn2.on("click", function () {
     populateItemTable();
     resetItemDetails.click();
     total.val(calculateTotal());
+
+    subTotalInput.val('');
+    cashInput.val('');
+    balanceInput.val('');
 });
 
 updateBtn2.on("click",function () {
