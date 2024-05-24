@@ -47,7 +47,9 @@ $('#nav-place-order').on('click', function() {
     resetItemDetails.click();
     updateBtn2.prop("disabled",true);
     removeBtn2.prop("disabled",true);
-    generateCurrentDate();
+    orderId.val(generateOrderId());
+    populateCustomerIDs();
+    generateOrderId();
     populateItemIDs();
     /*searchField.attr("placeholder", "Search Order Id Here");*/
 
@@ -56,6 +58,23 @@ function generateCurrentDate(){
     $("#order_date").val(new Date().toISOString().slice(0, 10));
 }
 
+
+function generateOrderId() {
+    let highestOrderId = 0;
+
+    for (let i = 0; i < order_db.length; i++) {
+        // Extract the numeric part of the item code
+        const numericPart = parseInt(order_db[i].order_id.split('-')[1]);
+
+        // Check if the numeric part is greater than the current highest
+        if (!isNaN(numericPart) && numericPart > highestOrderId) {
+            highestOrderId = numericPart;
+        }
+    }
+
+    // Increment the highest numeric part and format as "item-XXX"
+    return `order-${String(highestOrderId + 1).padStart(3, '0')}`;
+}
 
 function populateItemIDs() {
 
@@ -71,6 +90,20 @@ function populateItemIDs() {
     }
 }
 
+
+function populateCustomerIDs() {
+
+    // Clear existing options except the default one
+    customerIdCB.find("option:not(:first-child)").remove();
+
+    // Iterate through the customerArray and add options to the select element
+    for (let i = 0; i < customer_db.length; i++) {
+        customerIdCB.append($("<option>", {
+            value: customer_db[i].customer_id,
+            text: customer_db[i].customer_id
+        }));
+    }
+}
 
 add.on("click", function () {
     let itemCodeValue = itemIdCB.val();
@@ -135,10 +168,28 @@ function populateItemTable() {
 function calculateTotal() {
     let total = 0;
     items.forEach((item) => {
-        total += item.priceValue * item.qtyValue;
+        total += item.priceValue * item.getQty;
     });
     return total;
 }
+
+discountInput.on("input", function() {
+    const discountValue = parseFloat(discountInput.val()) || 0; // Get the discount value as a float
+    const totalValue = calculateTotal(); // Calculate the total based on your logic
+    const subtotalValue = totalValue - (totalValue * (discountValue / 100)); // Calculate the subtotal
+
+    // Update the sub-total input field
+    subTotalInput.val(subtotalValue);
+});
+
+cashInput.on("input", function() {
+    const cashValue = parseFloat(cashInput.val()) || 0; // Get the cash value as a float
+    const totalValue = parseFloat(subTotalInput.val())||0; // Calculate the total based on your logic
+    const balanceValue = cashValue - totalValue; // Calculate the balance
+
+    // Update the balance input field
+    balanceInput.val(balanceValue);
+});
 
 resetItemDetails.on("click", function () {
     itemIdCB.val('Select Item Code');
@@ -177,6 +228,8 @@ itemIdCB.on("change", function() {
         qty.val(existingItem.qtyValue);
     }
 });
+
+
 
 $('#item-order-table').on('click', 'tbody tr', function() {
 
