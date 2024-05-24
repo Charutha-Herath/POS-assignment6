@@ -17,17 +17,17 @@ let cashInput=$('#Cash');
 let balanceInput=$('#balance');
 
 
-let itemIdCB = $('#item_code1');
-let itemName=$('#item_name1');
-let price=$('#price1');
+let itemIdCB = $('#order_item_code');
+let itemName=$('#order_item_name');
+let price=$('#order_price');
 let qtyOnHand=$('#qty_on_hand');
 let qty=$('#getQty');
 
 
-
-let add = $('#addBtn');
-let resetItemDetails=$('#resetItemDetailsBtn');
 let submitBtn=$('#purchase_btn');
 
-let updateBtn2=$('#UpdateBtn3');
-let removeBtn=$('#removeBtn');
+let add = $('#order_add_btn');
+let updateBtn2=$('#order_update_btn');
+let removeBtn=$('#order_delete_btn');
+let resetItemDetails=$('#order_reset_btn');
+
