@@ -7,6 +7,9 @@ import {CustomerModel} from "../model/customerModel.js";
 import {order_db} from "../db/db.js";
 import {OrderModel} from "../model/placeOrderModel.js";
 
+import {order_details_db} from "../db/db.js";
+import {orderModel} from "../model/orderDetailsModel.js";
+
 let customerIdCB = $('#order_customer_id');
 let orderId=$('#order_id');
 let customerName=$('#order_customer_name');
@@ -51,6 +54,7 @@ $('#nav-place-order').on('click', function() {
     populateCustomerIDs();
     generateOrderId();
     populateItemIDs();
+    generateCurrentDate();
     /*searchField.attr("placeholder", "Search Order Id Here");*/
 
 });
@@ -304,34 +308,92 @@ updateBtn2.on("click",function () {
 
 });
 
-/*
-resetBtn.on("click", function () {
-    // Reset the form fields to their initial state
-    generateCurrentDate();
-    populateCustomerIDs();
-    populateItemIDs();
-    orderId.val(generateOrderId());
-    $("#total").val('');       // Reset the total
-    $("#discount").val('');    // Reset the discount
-    $("#Cash").val('');        // Reset the cash input
+
+submitBtn.on("click", function (e) {
+
+    e.preventDefault();
+
+    // Get the data needed for the order
+    const orderDate = $("#order_date").val();
+    const orderId = $("#order_id").val();
+    const customerId = $("#order_customer_id").val();
+    const total = $("#total").val();
+    const discount = $("#discount").val();
+    const cash = $("#Cash").val();
+
+    // Validate order data
+    if (!orderDate) {
+        showValidationError('Null Input', 'Please select an order date');
+        return;
+    }
+
+    if (!orderId) {
+        showValidationError('Null Input', 'Please generate an order ID');
+        return;
+    }
+
+    if (customerId === "Select Customer Id") {
+        showValidationError('Invalid Input', 'Please select a customer');
+        return;
+    }
+
+    if (!total || parseFloat(total) <= 0) {
+        showValidationError('Invalid Input', 'Total must be a positive number');
+        return;
+    }
+
+    if (!cash || parseFloat(cash) < 0) {
+        showValidationError('Invalid Input', 'Cash amount must be a positive number');
+        return;
+    }
+
+    const discountValue = parseFloat(discount);
+    if (isNaN(discountValue) || discountValue < 0 || discountValue > 100) {
+        showValidationError('Invalid Input', 'Discount must be a number between 0 and 100');
+        return;
+    }
+
+    // Create an order instance
+    const order = new OrderModel(orderDate, orderId, customerId, total, discount, cash);
+    console.log("order array : ",order);
+    // Add the order to the order_db array
+    order_db.push(order);
+
+    // Loop through the items in your order details
+    items.forEach(item => {
+        const orderDetail = new orderModel(orderId, item.itemCode, item.priceValue, item.getQty);
+        console.log("orderDetails array : ",orderDetail);
+        order_details_db.push(orderDetail);
+
+        item_db.forEach((itemObj) => {
+            if (itemObj.item_code === item.itemCode) {
+                itemObj.qty_on_hand -= item.getQty;
+            }
+        });
+    });
+
+
+    // Display a success message
+    Swal.fire(
+        'Order Placed Successfully!',
+        'The order has been saved.',
+        'success'
+    );
+
     customerName.val('');
-    itemName.val('');
-    price.val('');
-    qtyOnHand.val('');
     total.val('');
-    discountInput.val('');
-    cashInput.val('');
+    discount.val('');
     subTotalInput.val('');
+    cashInput.val('');
     balanceInput.val('');
 
-    /!*Clear the items array*!/
     items = [];
 
-    /!*Clear the item order table*!/
     $("#item-order-table tbody").empty();
 
-    updateBtn.prop("disabled", true);
-    deleteBtn.prop("disabled", true);
-    submitBtn.prop("disabled",false);
+    /*resetBtn.click();*/
+});
 
-});*/
+
+
+
