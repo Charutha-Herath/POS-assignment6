@@ -229,7 +229,19 @@ itemIdCB.on("change", function() {
     }
 });
 
+customerIdCB.on("change", function() {
+    // Capture the selected value in a variable
+    let selectedValue = $(this).val();
 
+    let customerObj = $.grep(customer_db, function(customer) {
+        return customer.customer_id === selectedValue;
+    });
+
+    if (customerObj.length > 0) {
+        // Access the first element in the filtered array
+        customerName.val(customerObj[0].name);
+    }
+});
 
 $('#item-order-table').on('click', 'tbody tr', function() {
 
@@ -249,6 +261,41 @@ $('#item-order-table').on('click', 'tbody tr', function() {
     removeBtn2.prop("disabled",false);
     add.prop("disabled", true);
 
+
+});
+
+removeBtn2.on("click", function () {
+    let index = items.findIndex(item => item.itemCode === itemIdCB.val());
+    items.splice(index, 1);
+    populateItemTable();
+    resetItemDetails.click();
+    total.val(calculateTotal());
+});
+
+updateBtn2.on("click",function () {
+
+    let itemCodeValue = itemIdCB.val();
+    let qtyValue = parseInt(qty.val());
+
+    /*Check if the item is already in the items array*/
+    let existingItem = items.find(item => item.itemCode === itemCodeValue);
+
+    if (existingItem) {
+        if (qtyOnHand.val() >= qtyValue) {
+            /*Update the quantity of the existing item*/
+            existingItem.getQty = qtyValue;
+
+            /*Populate the Item table*/
+            populateItemTable();
+
+            /*Reset the item details*/
+            resetItemDetails.click();
+        } else {
+            showValidationError('Invalid Input', 'Out of stock');
+        }
+    }
+
+    total.val(calculateTotal());
 
 });
 
