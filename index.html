@@ -18,10 +18,10 @@
 
     <style>
 
-        #sec-main-place-order,#sec-main-store,#sec-main-customer{
+        #sec-main-place-order,#sec-main-store,#sec-main-customer,#sec-main-orderDetails{
             display: none;
         }
-        #nav-home,#nav-place-order,#nav-store,#nav-customer{
+        #nav-home,#nav-place-order,#nav-store,#nav-customer,#nav-Order_details{
             cursor: pointer;
         }
     </style>
@@ -47,7 +47,10 @@
                         <span class="nav-link"  id="nav-store">Store</span>
                     </li>
                     <li class="nav-item">
-                        <span class="nav-link"  id="nav-customer">Customer</span>
+                        <span class="nav-link"  id="nav-customer" style="margin-right: 30px">Customer</span>
+                    </li>
+                    <li class="nav-item">
+                        <span class="nav-link"  id="nav-Order_details">Order Details</span>
                     </li>
                 </ul>
                 <button type="button" class="btn btn-link">Log out</button>
@@ -381,6 +384,39 @@
 </section>
 
 
+<!--------------------------------------------------------- Order Details --------------------------------------------------------->
+
+
+<section id="sec-main-orderDetails">
+    <section>
+        <div id="form">
+            <div class="text-center gradient-text">
+                <h3>Order Details Form</h3>
+            </div>
+
+            <div class="col table1">
+                <table class="table" id="item-details-table">
+                    <thead class="table-primary">
+                    <tr>
+                        <th scope="col">Order Id</th>
+                        <th scope="col">Order Date</th>
+                        <th scope="col">Customer Id</th>
+                        <th scope="col">Total</th>
+                        <th scope="col">Discount</th>
+                        <th scope="col">Sub Total</th>
+                        <th scope="col">Cash</th>
+                        <th scope="col">Balance</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+</section>
+
+
 
 <script>
     $('#nav-home').on('click', () => {
@@ -388,6 +424,7 @@
         $('#sec-main-place-order').css('display', 'none');
         $('#sec-main-store').css('display', 'none');
         $('#sec-main-customer').css('display', 'none');
+        $('#sec-main-orderDetails').css('display', 'none');
     });
 
     $('#nav-place-order').on('click', () => {
@@ -395,6 +432,7 @@
         $('#sec-main-place-order').css('display', 'block');
         $('#sec-main-store').css('display', 'none');
         $('#sec-main-customer').css('display', 'none');
+        $('#sec-main-orderDetails').css('display', 'none');
     });
 
     $('#nav-store').on('click', () => {
@@ -402,6 +440,7 @@
         $('#sec-main-place-order').css('display', 'none');
         $('#sec-main-store').css('display', 'block');
         $('#sec-main-customer').css('display', 'none');
+        $('#sec-main-orderDetails').css('display', 'none');
     });
 
     $('#nav-customer').on('click', () => {
@@ -409,6 +448,15 @@
         $('#sec-main-place-order').css('display', 'none');
         $('#sec-main-store').css('display', 'none');
         $('#sec-main-customer').css('display', 'block');
+        $('#sec-main-orderDetails').css('display', 'none');
+    });
+
+    $('#nav-Order_details').on('click', () => {
+        $('#sec-main-home').css('display', 'none');
+        $('#sec-main-place-order').css('display', 'none');
+        $('#sec-main-store').css('display', 'none');
+        $('#sec-main-customer').css('display', 'none');
+        $('#sec-main-orderDetails').css('display', 'block');
     });
 
 </script>
