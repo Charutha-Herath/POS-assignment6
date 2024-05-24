@@ -67,7 +67,8 @@ submit.on('click', (e) => {
             itemCodeValue,
             itemNameValue,
             priceValue,
-            qtyOnHandValue
+            qtyOnHandValue,
+            "n"
         );
 
         Swal.fire(
