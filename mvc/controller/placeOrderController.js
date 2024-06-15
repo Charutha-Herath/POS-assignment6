@@ -40,12 +40,6 @@ let items = [];
 
 
 
-
-
-
-
-
-
 $('#nav-place-order').on('click', function() {
     resetItemDetails.click();
     updateBtn2.prop("disabled",true);
@@ -147,8 +141,7 @@ function showValidationError(title, text) {
     Swal.fire({
         icon: 'error',
         title: title,
-        text: text,
-        footer: '<a href="">Why do I have this issue?</a>'
+        text: text
     });
 }
 
@@ -320,6 +313,7 @@ submitBtn.on("click", function (e) {
     const total = $("#total").val();
     const discount = $("#discount").val();
     const cash = $("#Cash").val();
+    const balanceInput1=$('#balance').val();
 
     // Validate order data
     if (!orderDate) {
@@ -352,6 +346,10 @@ submitBtn.on("click", function (e) {
         showValidationError('Invalid Input', 'Discount must be a number between 0 and 100');
         return;
     }
+    if (balanceInput1 < 0) {
+        showValidationError('Invalid Input', 'Cash Insufficient');
+        return;
+    }
 
     // Create an order instance
     const order = new OrderModel(orderDate, orderId, customerId, total, discount, cash);
@@ -372,28 +370,47 @@ submitBtn.on("click", function (e) {
         });
     });
 
+    clearAll();
 
-    // Display a success message
+    /*customerName.val('');
+    total='';
+    discount.val();
+    subTotalInput.val();
+    cashInput.val();
+    balanceInput.val();*/
+
+    items = [];
+
+    $("#item-order-table tbody").empty()
+
+
     Swal.fire(
         'Order Placed Successfully!',
         'The order has been saved.',
         'success'
     );
 
-    customerName.val('');
-    total.val('');
-    discount.val('');
-    subTotalInput.val('');
-    cashInput.val('');
-    balanceInput.val('');
 
-    items = [];
-
-    $("#item-order-table tbody").empty();
-
-    /*resetBtn.click();*/
 });
 
+function clearAll(){
+
+    customerName.val('')
+    total.val('')
+    discountInput.val('')
+    subTotalInput.val('')
+    cashInput.val('')
+    balanceInput.val('')
+
+
+    $("#nav-place-order.onclick").onclick
+
+
+    populateCustomerIDs();
+    orderId.val(generateOrderId());
+    populateItemIDs();
+    generateCurrentDate();
+}
 
 
 
