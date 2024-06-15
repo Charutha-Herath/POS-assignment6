@@ -18,7 +18,7 @@ let searchField=$('#searchField');
 
 
 
-
+const itemNamePattern = /^(?=.*[a-zA-Z])[a-zA-Z0-9 ._-]+$/;
 
 
 
@@ -59,8 +59,10 @@ submit.on('click', (e) => {
     let priceValue = parseFloat(price.val());
     let qtyOnHandValue = parseInt(qtyOnHand.val(), 10);
 
-    if(
-        validation(itemNameValue, "item name", null) &&
+
+
+        if(
+        validation(itemNameValue, "item name", itemNamePattern.test(itemNameValue)) &&
         validation(priceValue, "Price", null) &&
         validation(qtyOnHandValue, "Qty On Hand",null)){
         let item = new ItemModel(
@@ -105,8 +107,7 @@ function showValidationError(title, text) {
     Swal.fire({
         icon: 'error',
         title: title,
-        text: text,
-        footer: '<a href="">Why do I have this issue?</a>'
+        text: text
     });
 }
 
